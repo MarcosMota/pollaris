@@ -1,0 +1,48 @@
+form {
+    th {
+        text-align: center;
+    }
+}
+input[type=text],
+select,
+input[type=number] {
+    width: 90%;
+    border: none;
+    background-color: transparent;
+}
+
+input[type=text],
+input[type=number]:focus{
+    background-color: transparent;
+}
+
+.data-empty {
+    text-align: center;
+    p {
+        background-color: #ccc;
+        border-radius: 5px;
+        padding: 15px;
+        color: #333;
+        width: 40%;
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px solid #bbb;
+        font-style: italic;
+    }
+}
+
+.topbar {
+    display: block;
+    padding: 10px 10px 10px 0px;
+    margin: 10px 0px 0px 0px;
+    background: lightgray;
+}
+
+i {
+    cursor: pointer;
+    text-align: center;
+}
+
+.bordered { 
+    border-right: 1px white solid;
+}

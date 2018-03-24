@@ -1,0 +1,28 @@
+<!-- navbar-->
+<header class="header">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-holder d-flex align-items-center justify-content-between">
+                <div class="navbar-header">
+                    <a id="toggle-btn" (click)="onToggle()" class="menu-btn">
+                        <i class="icon-th"> </i>
+                    </a>
+                    <div class="navbar-brand">
+                        <div class="brand-text d-none d-md-inline-block">
+                            <span class="text-white">app </span>
+                            <strong class="text-white"> Finanças</strong>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+                   
+                    <li class="nav-item">
+                        <a (click)="onLogout()" class="nav-link logout">Sair
+                            <i class="fa fa-sign-out"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,28 @@
+<!-- Side Navbar -->
+<nav class="side-navbar mCustomScrollbar _mCS_1">
+    <div class="side-navbar-wrapper">
+        <div class="sidenav-header d-flex align-items-center justify-content-center">
+            <div class="sidenav-header-inner text-center">
+                <img src="assets/img/avatar.png" alt="person" class="img-fluid rounded-circle">
+                <h2 class="h5 text-uppercase">Marcos Mota</h2>
+                <span class="text-uppercase">Administrador</span>
+            </div>
+            <div class="sidenav-header-logo">
+                <a href="index.html" class="brand-small text-center">
+                    <strong>F</strong>
+                    <strong class="text-success">I</strong>
+                </a>
+            </div>
+        </div>
+        <div class="main-menu">
+            <ul id="side-main-menu" class="side-menu list-unstyled">
+                <li *ngFor="let item of menu" [routerLink]="item.link" routerLinkActive="active">
+                    <a >
+                        <i [className]="item.icone"></i>
+                        <span>{{ item.nome }}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

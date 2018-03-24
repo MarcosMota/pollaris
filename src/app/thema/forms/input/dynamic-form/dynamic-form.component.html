@@ -1,0 +1,64 @@
+<div class="row">
+    <form id="dynamicContainer" [formGroup]="dynamicForm" *ngIf="dynamicForm">
+        <div *ngFor="let formControl of dynamicForm.controls | keys;let i = index" [ngSwitch]="getControlType(i)" [ngClass]="controls[i].css">
+
+            <!-- Textbox -->
+            <div *ngSwitchCase="0">
+                <div class="form-group" [ngClass]="getClassForm(dynamicForm.get(controls[i].key))">
+                    <label class="form-control-label">{{ controls[i].model.label }}</label>
+                    <input class="form-control" type="text" [formControlName]="controls[i].key">
+                    <div class="form-control-feedback">{{ getMessageForm(dynamicForm.get(controls[i].key)) }}</div>
+                </div>
+            </div>
+            <!-- ComboBox -->
+            <div *ngSwitchCase="1">
+                <label>{{ controls[i].model.label }}</label>
+                <select [formControlName]="controls[i].key">
+                    <option *ngFor="let option of controls[i].model.options" [value]="option.value">
+                        {{ option.text }}
+                    </option>
+                </select>
+            </div>
+
+            <!-- Numeric -->
+            <div *ngSwitchCase="2">
+                <div class="form-group" [ngClass]="getClassForm(dynamicForm.get(controls[i].key))">
+                    <label class="form-control-label">{{ controls[i].model.label }}</label>
+                    <input class="form-control" type="number" [formControlName]="controls[i].key">
+                    <div class="form-control-feedback">{{ getMessageForm(dynamicForm.get(controls[i].key)) }}</div>
+                </div>
+            </div>
+
+            <!-- CheckBox -->
+            <div *ngSwitchCase="3" class="form-check">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" [formControlName]="controls[i].key">{{ controls[i].model.label }}
+                </label>
+            </div>
+
+            <!-- Date -->
+            <div *ngSwitchCase="4">
+                <label>{{ controls[i].model.label }}</label>
+                <input type="date" [formControlName]="controls[i].key">
+            </div>
+
+
+            <!-- Hidden -->
+            <div *ngSwitchCase="6">
+                <input type="hidden" [formControlName]="controls[i].key">
+            </div>
+
+            <!-- E-mail -->
+            <div *ngSwitchCase="7">
+                <div class="form-group" [ngClass]="getClassForm(dynamicForm.get(controls[i].key))">
+                    <label class="form-control-label">{{ controls[i].model.label }}</label>
+                    <input class="form-control" type="email" [formControlName]="controls[i].key">
+                    <div class="form-control-feedback">{{ getMessageForm(dynamicForm.get(controls[i].key)) }}</div>
+                </div>
+            </div>
+        </div>
+    </form>
+    
+</div>
+<input type="button" class="btn btn-success mr-2" value="Salvar" (click)="getValues()">
+<input type="button" class="btn btn-danger" value="Cancelar" (click)="onCancel()">

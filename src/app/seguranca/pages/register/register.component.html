@@ -1,0 +1,38 @@
+<div class="page login-page">
+        <div class="container">
+            <div class="form-outer text-center d-flex align-items-center">
+                <div class="form-inner" style="width: 100%">
+                    <div class="logo text-uppercase">
+                        <span>Finanças</span>
+                        <strong class="text-primary">App</strong>
+                    </div>
+                    <form id="login-form" [formGroup]="form">
+                        <div class="form-group">
+                            <!--<label for="login-username" class="label-custom">User Name</label>-->
+                            <input id="login-username" formControlName="nome" type="text" placeholder="Nome">
+                        </div>
+                        <div class="form-group">
+                            <!--<label for="login-username" class="label-custom">User Name</label>-->
+                            <input id="login-username" formControlName="email" type="email" placeholder="E-mail">
+                        </div>
+                        <div class="form-group">
+                            <!--<label for="login-password" class="label-custom">Password</label>-->
+                            <input id="login-password" formControlName="senha" type="password" placeholder="Senha">
+                        </div>
+                        <div class="form-group">
+                            <!--<label for="login-password" class="label-custom">Password</label>-->
+                            <input id="login-password" formControlName="conf_senha" type="password" placeholder="Confirmar Senha">
+                        </div>
+                        <a id="login" (click)="onRegister()" class="btn btn-primary">Registrar</a>
+                        
+                    </form>
+                </div>
+                <div class="copyrights text-center">
+                    <p>Desenvolvido por Marcos Mota
+                        <a href="#" class="external">Marcos Mota</a>
+                    </p>
+                    <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+                </div>
+            </div>
+        </div>
+    </div>

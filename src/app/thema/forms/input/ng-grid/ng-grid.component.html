@@ -1,0 +1,57 @@
+<div class="topbar">
+        <div class="row">
+            <div class="colspan-5 col-3">
+                <h3>{{ model.title }}</h3>
+            </div>
+            <div class="colspan-3 col-1">
+                <i type="button" (click)="addRow()" 
+                    class="text-right icon-lg acruxicon-circle-plus"></i>
+            </div>
+        </div>
+</div>
+
+<form [formGroup]="parentFormGroup" *ngIf="parentFormGroup">
+    <table formArrayName="series" class="table">
+        <thead>
+            <tr>
+                <th class="bordered" *ngFor="let column of model?.getColumns(); let j = index;" 
+                    [style.width]="getControlWidth(j)">{{ column.header }}</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Quando não tem nenhuma linha -->
+            <tr *ngIf="parentFormGroup.controls.grid?.controls.length == 0">
+                <td *ngIf="parentFormGroup  .controls.grid?.controls.length == 0" 
+                    class="data-empty" colspan="4">
+                    <p>Clique em adicionar item para inserir numa nova linha</p>
+                </td>
+            </tr>
+
+            <!-- Renderização das linhas -->
+            <tr *ngFor="let group of getFormGroups(); let i = index;" [formGroupName]="i">
+                <td *ngFor="let control of group.controls | keys; let j = index;" 
+                    [ngSwitch]="getControlType(j)" [style.width]="getControlWidth(j)">
+
+                    <!-- TextBox -->
+                    <input [formControlName]="control.key" type="text" *ngSwitchCase="0">
+
+                    <!-- ComboBox -->
+                    <select [formControlName]="control.key" *ngSwitchCase="1">
+                        <option *ngFor="let option of getControlOptions(j)" [value]="option.value">
+                            {{ option.text }}
+                        </option>
+                    </select>
+
+                    <!-- Numeric -->
+                    <input [formControlName]="control.key" type="number" *ngSwitchCase="2">
+                </td>
+
+                <td class="text-center">
+                    <i type="button" (click)="removeRow(i)" class="iconic iconic-trash"></i>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</form>
